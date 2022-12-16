@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- 
+            sqwek:
+                when user clicks the gif, play a sound and alert them.
+        -->
+        
+        
+        <script>
+            
+            var clicks = 0
+            function sqwek() {
+                clicks++;
+                if (clicks >= 10)
+                {
+                    alert("MASIMUM SQEK!!!!");
+                    audio.volume = 1.0
+                }
+                else
+                {
+                    alert("sqwek: " + clicks);
+                }
+            }
+            var audio = new Audio('squeak.mp3');
+            audio.volume = 0.5
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ZeroPointNothing: HOME</title>
         
@@ -50,6 +74,27 @@
               background-attachment: fixed;
               background-size: cover;
             }
+            img:hover {
+              /* Start the shake animation and make the animation last for 0.5 seconds */
+              animation: shake 0.1s;
+                        
+              /* When the animation is finished, start again */
+              animation-iteration-count: infinite;
+            }
+            
+            @keyframes shake {
+              0% { transform: translate(1px, 1px) rotate(0deg); }
+              10% { transform: translate(-1px, -2px) rotate(-1deg); }
+              20% { transform: translate(-3px, 0px) rotate(1deg); }
+              30% { transform: translate(3px, 2px) rotate(0deg); }
+              40% { transform: translate(1px, -1px) rotate(1deg); }
+              50% { transform: translate(-1px, 2px) rotate(-1deg); }
+              60% { transform: translate(-3px, 1px) rotate(0deg); }
+              70% { transform: translate(3px, 1px) rotate(-1deg); }
+              80% { transform: translate(-1px, -1px) rotate(1deg); }
+              90% { transform: translate(1px, 2px) rotate(0deg); }
+              100% { transform: translate(1px, -2px) rotate(-1deg); }
+            }
         </style>
     </head>
     <body>
@@ -57,25 +102,46 @@
             <a href="./aboutme.html">About Me</a>
         </nav>
             <!-- Welcome the user -->  
-        <h1 align="middle" style="color: rgb(70, 97, 250)">
-            Welcome!
+        <center>    
+        <audio controls autoplay muted loop>
+            <source src="music.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        </center>
+            
+        <h1 align="middle" style="color: rgb(218, 223, 255)">
+            welcome.
         </h1>
+        
+        <center>
+        <img onclick="audio.play(); sqwek();" src=https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true alt="funny GIF" width="20%">
+        </center>
         <p align="middle" style= "font-size:1.4vw; color: rgb(146, 158, 223);">
-            This is the official page for all of my projects. <br>
-            Even this is a project! Over time, I plan to make this website a lot more functional. <br> <br>
-            Until then, here are links to my projects. (Both will lead you to their GitHub pages.)
-        </p>
-        <!-- Links to GitHub download pages and source code. -->
-        <div id="wrapper">
-            <button type="button" onclick="window.location.href='https://github.com/ZeroPointNothing/BatchQuest';">
+            <!-- Links to GitHub download pages and source code. -->
+            <a 
+                href='https://github.com/ZeroPointNothing/BatchQuest'>
                 BatchQuest
-            </button>
-        <br> <br>
-        <button type="button" onclick="window.location.href='https://github.com/ZeroPointNothing/Doki-Doki-Bright-Horizons'">
-            Doki Doki Bright Horizons
-        </button>
-        </div>
+            </a>
+            <br> <br>
+            <a 
+                href="https://github.com/ZeroPointNothing/Doki-Doki-Bright-Horizons">
+                Doki-Doki-Bright-Horizons
+            </a>
+        </p>
+
 
     </body>
     <!-- Look at you, so sneaky >:D -->
 </html>
+
+<!--
+    data stored below is for reference purposes only.
+    
+    
+    <p align="middle" style= "font-size:1.4vw; color: rgb(146, 158, 223);">
+    This is the official page for all of my projects. <br>
+    Even this is a project! Over time, I plan to make this website a lot more functional. <br> <br>
+    Until then, here are links to my projects. (Both will lead you to their GitHub pages.)
+</p> 
+
+--->
