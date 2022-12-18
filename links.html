@@ -2,11 +2,12 @@
 <html>
     <head>
         <nav>
-            <a href="./">Home</a>
+            <p class="home" ><a href="./">Home</a></p>
+            <br>
         </nav>
         <title>links</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href=
+        <link id="webicon" rel="icon" href=
         "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
         type="image/x-icon">
 
@@ -17,20 +18,49 @@
                 background-attachment: fixed;
                 background-size: cover;
             }
+            .card {
+               background-color: rgb(46, 41, 73);
+               height: 100%;
+               padding: 40px;
+               margin-top: 10px;
+               border: solid rgb(28, 25, 46) 5px;
+               border-radius: 10px;
+            }
+            .home {
+               background-color: rgb(219, 213, 255);
+               padding: 10px;
+               margin-top: 5px;
+               border: solid rgb(28, 25, 46) 5px;
+            }
+            links {
+                color: rgb(103, 98, 136);
+                background-color: rgb(11, 6, 81);
+                padding: 7px;
+                border-radius: 8px;
+                cursor: pointer;
+                
+            }
+            links:hover {
+                background-color: aliceblue;
+                transition: 0.2s;
+            }
         </style>
 
 
-        <p align="middle" style= "font-size:2vw; color: rgb(146, 158, 223);">
+        <p align="middle" class="card">
             <!-- Links to GitHub download pages and source code. -->
-            <a 
-                href='https://github.com/ZeroPointNothing/BatchQuest'>
+            LINKS
+            <br><br>
+            <links 
+                onclick="window.location.href = 'https://github.com/ZeroPointNothing/BatchQuest'";>
                 BatchQuest
-            </a>
+            </links>
             <br> <br>
-            <a 
-                href="https://github.com/ZeroPointNothing/Doki-Doki-Bright-Horizons">
+            
+            <links
+                onclick="window.location.href = 'https://github.com/ZeroPointNothing/Doki-Doki-Bright-Horizons'">
                 Doki-Doki-Bright-Horizons
-            </a>
+            </links>
         </p>
     </head>
 </html>
