@@ -15,6 +15,14 @@
                 if (clicks >= 10)
                 {
                     alert("MASIMUM SQEK!!!!");
+                    console.error("WARNING: MASIMUM SQWEK ACHIEVED. REDIRECTING POWER FROM WHITEHOUSE.")
+                    document.body.style.backgroundImage = "url('https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true')";
+                    // Select the link element with the id of "webicon"
+                    var iconLink = document.getElementById("webicon");
+                    
+                    // Update the href attribute with the URL of the new icon
+                    iconLink.setAttribute("href", "./img/frog.gif");
+                    document.title = "frog."
                     audio.volume = 1.0
                 }
                 else
@@ -37,7 +45,7 @@
         <!--
             Link to Webpage's Icon.
         -->
-        <link rel="icon" href=
+        <link id="webicon" rel="icon" href=
         "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
         type="image/x-icon">
     
@@ -105,9 +113,9 @@
     </head>
     <body>
         <nav>
-            <a href="./aboutme">About Me</a>
+            <a href="./aboutme.html">About Me</a>
             <br>
-            <a href="./links">links</a>
+            <a href="./links.html">links</a>
         </nav>
             <!-- Welcome the user -->              
         <h1 align="middle" style="color: rgb(218, 223, 255)">
