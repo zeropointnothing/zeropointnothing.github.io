@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <!-- Important stuff START -->
+        
+        
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Zero's Void | Fun: HOME</title>
+            <!-- Embed code. -->
+            <meta content="Zero's Void | Fun: HOME" property="og:title" />
+            <meta content="fun stuff." property="og:description" />
+            <meta content="https://zeropointnothing.github.io/" property="og:url" />
+            <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
+            <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+            
+            <!--
+                Link to Webpage's Icon.
+            -->
+            <link id="webicon" rel="icon" href=
+            "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+            type="image/x-icon">
+        
+            <!-- Important stuff END -->
+        </head>
+
+        <body>
+            <center>
+            <div id="color-text" style="size: 50px;"></div>
+            </center>
+            <script>
+              // Generate a random color
+              function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                  color += letters[Math.floor(Math.random() * 16)];
+                }
+                
+                // Change the font size of the div. 
+                var element = document.getElementById("color-text");
+                element.style.fontSize = "100px";
+                return color; 
+            }
+          
+              // Set the body element's background to the random color
+              document.body.style.background = getRandomColor();
+
+              // Set the div 'color-text' to the color chosen.
+              var colorText = document.getElementById("color-text");
+              colorText.innerHTML += getRandomColor();
+
+            </script>
+        </body>
+    </html>
