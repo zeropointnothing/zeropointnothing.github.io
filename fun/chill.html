@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+
+            <style>
+                body {
+                background-image: url('https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/bg.png?raw=true');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+            </style>
+
+            <!-- Important stuff START -->        
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Zero's Void | Chill Zone</title>
+            <!-- Embed code. -->
+            <meta content="Zero's Void | Chill Zone" property="og:title" />
+            <meta content="Chill to music with the built in player." property="og:description" />
+            <meta content="https://zeropointnothing.github.io/fun/chill" property="og:url" />
+            <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
+            <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+            
+            <!--
+                Link to Webpage's Icon.
+            -->
+            <link id="webicon" rel="icon" href=
+            "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+            type="image/x-icon">
+        
+            <!-- Important stuff END -->
+            
+            <style>
+                .track_b {
+                    background-color: rgb(69, 81, 92);
+                    text-align: center;
+                }
+                .track_e {
+                    background-color: rgb(167, 179, 189);
+                    text-align: center;
+                    padding: 3px;
+                }
+                .buttons {
+                    background-color: grey;
+                    padding: 10px;
+                    text-align: center;
+                    border-radius: 10px;
+                }
+                msc_cont {
+                color: rgb(83, 80, 98);
+                background-color: rgb(2, 19, 44);
+                padding: 7px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-family: 'Lucida Sans';
+                
+                }
+                msc_cont:hover {
+                    background-color: aliceblue;
+                    transition: 0.2s;
+                }
+            </style>
+            <p1>
+                <div class="track_b" id="track_beg">uh oh. this isn't working...</div>
+                <br>
+                <div class="track_e" id="track_end">placeholder.</div>
+            </p1>
+
+            <script>
+                var track = new Audio('./music/track1.mp3');
+                track.volume = 0.2;
+                var track_num = 1;
+                var track_name = "Lofi Chill Music";
+                current_track();
+                function current_track() {
+                    if (track_num <= 0) {
+                        track_num = 1
+                    }
+
+                    track.addEventListener('ended', next_track);
+                    track.play()
+                    track_beg.innerHTML = "Now Playing: Track " + track_num;
+                    var element = document.getElementById("track_beg");
+                    element.style.fontSize = "50px";
+                    get_name()
+                }
+                function next_track() {
+                    track_num +=1
+                    stopTrack(track)
+                    update_aud()
+                    current_track()
+                }
+                function last_track() {
+                    track_num -=1
+                    stopTrack(track)
+                    update_aud()
+                    current_track()
+                }
+
+                function get_name() {
+                    if (track_num == 1)
+                    {
+                        track_name = "???, by: ???"
+                    }
+                    if (track_num == 2)
+                    {
+                        track_name = "Relaxing Lofi Music, by: Relaxing Timers"
+                    }
+                    track_end.innerHTML = "'" + track_name + "'";
+                }
+
+                function update_aud() {
+                    if (track_num == 1)
+                    {
+                        track = new Audio('./music/track1.mp3')
+                    }
+                    if (track_num == 2) 
+                    {
+                    track = new Audio('./music/track2.mp3')
+                    }
+                    track.volume = 0.2;
+                }
+
+                function stop_track() {
+                    stopTrack(track)
+                }
+
+                function stopTrack(track) {
+                    //Stop the current track.
+                    track.pause();
+                    track.currentTime = 0;
+                }
+
+            </script>
+            <p class="buttons">
+                <msc_cont onclick="last_track()">Previous</msc_cont>
+                <msc_cont onclick="stop_track()">STOP</msc_cont>
+                <msc_cont onclick="next_track()">Next</msc_cont>
+            </p>
+        </head>
+    </html>
