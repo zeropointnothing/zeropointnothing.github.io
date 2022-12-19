@@ -66,14 +66,16 @@
             <p1>
                 <div class="track_b" id="track_beg">uh oh. this isn't working...</div>
                 <br>
-                <div class="track_e" id="track_end">placeholder.</div>
+                <div class="track_e" id="track_end">oh no..</div>
             </p1>
 
             <script>
+                volu = 0.2
                 var track = new Audio('./music/track1.mp3');
-                track.volume = 0.2;
+                track.volume = volu;
                 var track_num = 1;
-                var track_name = "Lofi Chill Music";
+                var track_name = "???, by: ???";
+                document.title = 'Chill Zone | ' + track_name
                 current_track();
                 function current_track() {
                     if (track_num <= 0) {
@@ -86,6 +88,7 @@
                     var element = document.getElementById("track_beg");
                     element.style.fontSize = "50px";
                     get_name()
+                    document.title = 'Chill Zone | ' + track_name
                 }
                 function next_track() {
                     track_num +=1
@@ -109,6 +112,19 @@
                     {
                         track_name = "Relaxing Lofi Music, by: Relaxing Timers"
                     }
+                    if (track_num == 3)
+                    {
+                        track_name = "So Far So Good, by: Sun Of They"
+                    }
+                    if (track_num == 4)
+                    {
+                        track_name = "Apricity, by: Imala Zir"
+                    }
+                    if (track_num == 5)
+                    {
+                        track_name = "Aria Math, by: C418"
+                    }
+
                     track_end.innerHTML = "'" + track_name + "'";
                 }
 
@@ -119,9 +135,21 @@
                     }
                     if (track_num == 2) 
                     {
-                    track = new Audio('./music/track2.mp3')
+                        track = new Audio('./music/track2.mp3')
                     }
-                    track.volume = 0.2;
+                    if (track_num == 3)
+                    {
+                        track = new Audio('./music/track3.mp3')
+                    }
+                    if (track_num == 4)
+                    {
+                        track = new Audio('./music/track4.mp3')
+                    }
+                    if (track_num == 5)
+                    {
+                        track = new Audio('./music/track5.mp3')
+                    }
+                    track.volume = volu;
                 }
 
                 function stop_track() {
@@ -132,6 +160,26 @@
                     //Stop the current track.
                     track.pause();
                     track.currentTime = 0;
+                }
+
+                function volume_up()
+                {
+                    if (volu < 0.9) {
+                        volu +=0.1
+                        track.volume = volu
+                    } else {
+                        return
+                    }
+                }
+
+                function volume_down()
+                {
+                    if (volu > 0.1) {
+                        volu -=0.1
+                        track.volume = volu
+                    } else {
+                        return
+                    }
                 }
 
                 function fix() {
@@ -146,6 +194,9 @@
                 <msc_cont onclick="last_track()">Previous</msc_cont>
                 <msc_cont onclick="stop_track()">STOP</msc_cont>
                 <msc_cont onclick="next_track()">Next</msc_cont>
+                <br><br>
+                <msc_cont onclick="volume_up()">volume up.</msc_cont>
+                <msc_cont onclick="volume_down()">volume down.</msc_cont>
             </p>
             <br><br><br>
             <center>
