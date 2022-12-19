@@ -31,6 +31,9 @@
                     <h1 class="title">
                         SNAKE
                     </h1>
+                    <div id="the_reds">
+                      o-o
+                    </div>
                 </center>
                 <style>
 
@@ -62,9 +65,21 @@
               <canvas width="800" height="800" id="game"></canvas>
               
               <script>
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                // The user is using a mobile device.
+                window.location.replace("https://zeropointnothing.github.io/fun/nomobile.html");
+                }
+                
+                // Prevent scrolling using arrow keys.
+                window.addEventListener("keydown", function(e) {
+                if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                    e.preventDefault();
+                }
+              }, false);
               var canvas = document.getElementById('game');
               var context = canvas.getContext('2d');
               
+              red_things = 0
               var grid = 16;
               var count = 0;
                 
@@ -149,7 +164,8 @@
                   // snake ate apple
                   if (cell.x === apple.x && cell.y === apple.y) {
                     snake.maxCells++;
-              
+                    red_things ++;
+                    the_reds.innerHTML = "Red Things Collected: " + red_things;
                     // 800/25 = 32x32 grids.
                     apple.x = getRandomInt(0, 25) * grid;
                     apple.y = getRandomInt(0, 25) * grid;
@@ -167,6 +183,9 @@
                       snake.dx = grid;
                       snake.dy = 0;
               
+                      red_things = 0;
+                      the_reds.innerHTML = "Red Things Collected: " + red_things;
+
                       apple.x = getRandomInt(0, 25) * grid;
                       apple.y = getRandomInt(0, 25) * grid;
                     }
