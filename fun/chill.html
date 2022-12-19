@@ -59,6 +59,9 @@
                     background-color: aliceblue;
                     transition: 0.2s;
                 }
+                #fix-link {
+                  display: inline-block;
+                }
             </style>
             <p1>
                 <div class="track_b" id="track_beg">uh oh. this isn't working...</div>
@@ -131,11 +134,26 @@
                     track.currentTime = 0;
                 }
 
+                function fix() {
+                    document.getElementById('fix-link').style.display = 'none';
+                    track_num = 1
+                    update_aud()
+                    current_track()
+                }
+
             </script>
             <p class="buttons">
                 <msc_cont onclick="last_track()">Previous</msc_cont>
                 <msc_cont onclick="stop_track()">STOP</msc_cont>
                 <msc_cont onclick="next_track()">Next</msc_cont>
             </p>
+            <br><br><br>
+            <center>
+            <p id="fix-link" style="color: aliceblue;">
+                music didn't start?
+                <br>
+                <a href="javascript:fix()" id="fix-link">click here to refresh</a>
+            </p>
+            </center>
         </head>
     </html>
