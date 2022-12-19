@@ -8,7 +8,42 @@
         
         
         <script>
-            
+            addTimesVs()
+            // Function to create Cookies. Call with 'setCookie([name of cookie], [value of cookie], [expiration date.]'
+            function setCookie(name, value, days) {
+              var expires = "";
+              if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+              }
+              document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            }
+            // Function to retrieve a Cookie's value. Call with 'getCookie([cookie name])'.
+            function getCookie(name) {
+              var nameEQ = name + "=";
+              var ca = document.cookie.split(';');
+              for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+              }
+              return null;
+            }
+
+            //Practice cookie.
+            function addTimesVs() {
+                var value = getCookie('timesVisited')
+                if (value == null)
+                {
+                    setCookie('timesVisited', 1, 10)
+                } else {
+                    value = Number(value) + 1
+                    console.info('val:', value)
+                    setCookie('timesVisited', value, 10)
+                }
+            }
+
             var clicks = 0
             function sqwek() {
                 clicks++;
@@ -131,8 +166,13 @@
         <h1 align="middle" style="color: rgb(218, 223, 255)">
             welcome to the void.
         </h1>
-        
+
+
         <center>
+            <div style="color: aliceblue;" id="visits">
+                well, this didn't work.
+            </div>
+            <br>
         <img onclick="audio.play(); sqwek();" src=https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true alt="funny GIF" width="20%">
         <br><br>
         <audio controls autoplay muted loop>
@@ -142,6 +182,13 @@
         </center>
 
 
+        <script>
+            showVisits()
+            function showVisits() {
+                value = getCookie('timesVisited')
+                visits.innerHTML = "You've been here " + value + " time(s).";
+            }
+        </script>
     </body>
     <!-- Look at you, so sneaky >:D -->
 </html>
