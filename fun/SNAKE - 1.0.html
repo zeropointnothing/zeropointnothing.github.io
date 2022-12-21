@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <!-- Important stuff START -->
+        
+        
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Zero's Void | Fun: SNAKE</title>
+            <!-- Embed code. -->
+            <meta content="Zero's Void | Fun: SNAKE" property="og:title" />
+            <meta content="yooo, guys its snake." property="og:description" />
+            <meta content="https://zeropointnothing.github.io/" property="og:url" />
+            <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
+            <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+            
+            <script>
+                console.info("Code grabbed from https://iqcode.com/code/html/snake-game-html-code")
+            </script>
+
+            <!--
+                Link to Webpage's Icon.
+            -->
+            <link id="webicon" rel="icon" href=
+            "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+            type="image/x-icon">
+        
+            <!-- Important stuff END -->
+        
+            <head>
+                <center>
+                    <h1 class="title">
+                        SNAKE
+                    </h1>
+                    <div id="the_reds">
+                      o-o
+                    </div>
+                </center>
+                <style>
+
+                .title {
+                    background-color: grey;
+                    margin-right: 20px;
+                    border-radius: 10px;
+                    padding: 5px;
+                    font-family: sans-serif;
+                }
+                html, body {
+                  height: 100%;
+                  margin: 0;
+                }
+              
+                body {
+                  background: rgb(30, 30, 30);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 10px;
+                }
+                canvas {
+                  border: 1px solid white;
+                }
+                </style>
+              </head>
+                <!-- SNAKE canvas. -->
+              <canvas width="800" height="800" id="game"></canvas>
+              
+              <script>
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                // The user is using a mobile device.
+                window.location.replace("https://zeropointnothing.github.io/fun/nomobile.html");
+                }
+                
+                // Prevent scrolling using arrow keys.
+                window.addEventListener("keydown", function(e) {
+                if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                    e.preventDefault();
+                }
+              }, false);
+              var canvas = document.getElementById('game');
+              var context = canvas.getContext('2d');
+              
+              red_things = 0
+              var grid = 16;
+              var count = 0;
+                
+              var snake = {
+                x: 160,
+                y: 160,
+                
+                // snake velocity. moves one grid length every frame in either the x or y direction
+                dx: grid,
+                dy: 0,
+                
+                // keep track of all grids the snake body occupies
+                cells: [],
+                
+                // length of the snake. grows when eating an apple
+                maxCells: 3
+              };
+              var apple = {
+                x: 320,
+                y: 320
+              };
+              
+              // get random whole numbers in a specific range
+              // @see https://stackoverflow.com/a/1527820/2124254
+              function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+              }
+              
+              // game loop
+              function loop() {
+                requestAnimationFrame(loop);
+              
+                // slow game loop to 15 fps instead of 60 (60/15 = 4)
+                // The higher the number, the slower the snake.
+                if (++count < 10) {
+                  return;
+                }
+              
+                count = 0;
+                context.clearRect(0,0,canvas.width,canvas.height);
+              
+                // move snake by it's velocity
+                snake.x += snake.dx;
+                snake.y += snake.dy;
+              
+                // wrap snake position horizontally on edge of screen
+                if (snake.x < 0) {
+                  snake.x = canvas.width - grid;
+                }
+                else if (snake.x >= canvas.width) {
+                  snake.x = 0;
+                }
+                
+                // wrap snake position vertically on edge of screen
+                if (snake.y < 0) {
+                  snake.y = canvas.height - grid;
+                }
+                else if (snake.y >= canvas.height) {
+                  snake.y = 0;
+                }
+              
+                // keep track of where snake has been. front of the array is always the head
+                snake.cells.unshift({x: snake.x, y: snake.y});
+              
+                // remove cells as we move away from them
+                if (snake.cells.length > snake.maxCells) {
+                  snake.cells.pop();
+                }
+              
+                // draw apple
+                // fillStyle controls color.
+                context.fillStyle = 'red';
+                context.fillRect(apple.x, apple.y, grid-1, grid-1);
+              
+                // draw snake one cell at a time
+                context.fillStyle = 'green';
+                snake.cells.forEach(function(cell, index) {
+                  
+                  // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
+                  context.fillRect(cell.x, cell.y, grid-1, grid-1);  
+              
+                  // snake ate apple
+                  if (cell.x === apple.x && cell.y === apple.y) {
+                    snake.maxCells++;
+                    red_things ++;
+                    the_reds.innerHTML = "Red Things Collected: " + red_things;
+                    // 800/25 = 32x32 grids.
+                    apple.x = getRandomInt(0, 25) * grid;
+                    apple.y = getRandomInt(0, 25) * grid;
+                  }
+              
+                  // check collision with all cells after this one (modified bubble sort)
+                  for (var i = index + 1; i < snake.cells.length; i++) {
+                    
+                    // snake occupies same space as a body part. reset game
+                    if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+                      snake.x = 160;
+                      snake.y = 160;
+                      snake.cells = [];
+                      snake.maxCells = 4;
+                      snake.dx = grid;
+                      snake.dy = 0;
+              
+                      red_things = 0;
+                      the_reds.innerHTML = "Red Things Collected: " + red_things;
+
+                      apple.x = getRandomInt(0, 25) * grid;
+                      apple.y = getRandomInt(0, 25) * grid;
+                    }
+                  }
+                });
+              }
+              
+              // listen to keyboard events to move the snake
+              document.addEventListener('keydown', function(e) {
+                // prevent snake from backtracking on itself by checking that it's 
+                // not already moving on the same axis (pressing left while moving
+                // left won't do anything, and pressing right while moving left
+                // shouldn't let you collide with your own body)
+                
+                // left arrow key
+                if (e.which === 37 && snake.dx === 0) {
+                  snake.dx = -grid;
+                  snake.dy = 0;
+                }
+                // up arrow key
+                else if (e.which === 38 && snake.dy === 0) {
+                  snake.dy = -grid;
+                  snake.dx = 0;
+                }
+                // right arrow key
+                else if (e.which === 39 && snake.dx === 0) {
+                  snake.dx = grid;
+                  snake.dy = 0;
+                }
+                // down arrow key
+                else if (e.which === 40 && snake.dy === 0) {
+                  snake.dy = grid;
+                  snake.dx = 0;
+                }
+              });
+              
+              // start the game
+              requestAnimationFrame(loop);
+              </script>
+        
+        </head>
+    </html>
+
+  <!-- 
+
+    Coded with Love by ZeroPointNothing.
+
+    This code may be distributed and edited by anyone who has a copy of it.
+    
+    As always, happy gaming, and stay crazy!
+    
+  -->

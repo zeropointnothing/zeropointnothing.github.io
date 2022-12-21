@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <!-- Important stuff START -->        
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Zero's Void | Clock</title>
+            <!-- Embed code. -->
+            <meta content="Zero's Void | Clock" property="og:title" />
+            <meta content="isa clock. Tick Tock." property="og:description" />
+            <meta content="https://zeropointnothing.github.io/fun/chill" property="og:url" />
+            <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
+            <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+            
+            <!--
+                Link to Webpage's Icon.
+            -->
+            <link id="webicon" rel="icon" href=
+            "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+            type="image/x-icon">
+        
+            <!-- Important stuff END -->
+        </head>
+        <body>
+            <style>
+                body {
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: cover;
+                }                
+
+                div#date_time {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 350%;
+                }
+
+                .settings {
+                    padding: 10px;
+                    background-color: rgba(236, 253, 252, 0.2);
+                }
+            </style>
+            <p
+                class="settings">SETTINGS:
+                <br><br>background: 
+                <input 
+                    type="text" 
+                    name="bginp"
+                    placeholder="Enter Background Link" 
+                    onkeyup="UpdateBg()" 
+                    onchange="UpdateBg()"/>
+                <br>    
+                Clock Color:
+                <input 
+                    type="color"
+                    placeholder="colors!"
+                    name="clinp" 
+                    onkeyup="updateColor()" 
+                    onchange="updateColor()"/>
+            </p>
+            <div id="date_time">well, this broke :/</div>
+
+            <script>
+            // Cookies: START //
+            function setCookie(name, value, days) {
+              var expires = "";
+              if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+              }
+              document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            }
+            // Function to retrieve a Cookie's value. Call with 'getCookie([cookie name])'.
+            function getCookie(name) {
+              var nameEQ = name + "=";
+              var ca = document.cookie.split(';');
+              for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+              }
+              return null;
+            }
+            // Cookies: END //
+
+                document.body.style.backgroundRepeat = "no-repeat";
+                document.body.style.backgroundSize = "cover";
+                updateClock()
+                load()
+                function load()
+                    {
+                        if (getCookie('_clr') == null)
+                        {
+                            return
+                        } else {
+                            color = getCookie('_clr')
+                            let element = document.getElementById('date_time');
+                            element.style.color = color;
+                        }
+                        if (getCookie('_bg') == null)
+                        {
+                            return
+                        } else {
+                            bg = getCookie('_bg')
+                            document.body.style.backgroundImage = "url(" + bg + ")";
+                        }
+                    }
+                function UpdateBg() {
+                    var bg = document.getElementsByName("bginp")[0].value;
+                    document.body.style.backgroundImage = "url(" + bg + ")";
+                    setCookie('_bg', bg, 40)
+                }
+                function updateColor() {
+                    var color = document.getElementsByName("clinp")[0].value;
+                    let element = document.getElementById('date_time');
+                    element.style.color = color;
+                    setCookie('_clr', color, 40)
+                }
+                function updateClock() {
+                    var date = new Date();
+                    var hours = date.getHours();
+                    var minutes = date.getMinutes();
+                    var seconds = date.getSeconds();
+                    var month = date.getMonth();
+                    var day = date.getDate();
+                    var year = date.getFullYear();
+                    document.title = hours + ":" + minutes + ":" + seconds
+                    date_time.innerHTML = hours + ":" + minutes + ":" + seconds + '<br>' + month + "/" + day + "/" + year;
+                }
+                
+                setInterval(updateClock, 1000); // update the clock every second
+              </script>
+        </body>
+    </html>

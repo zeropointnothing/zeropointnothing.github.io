@@ -70,6 +70,21 @@
             </p1>
 
             <script>
+                track_locs = [
+
+                    'dummy',
+                    
+                    './music/track1.mp3',
+                
+                    './music/track2.mp3',
+
+                    './music/track3.mp3',
+                    
+                    './music/track4.mp3',
+                    
+                    './music/track5.mp3'
+                ]
+
                 volu = 0.2
                 var track = new Audio('./music/track1.mp3');
                 track.volume = volu;
@@ -129,27 +144,10 @@
                 }
 
                 function update_aud() {
-                    if (track_num == 1)
-                    {
-                        track = new Audio('./music/track1.mp3')
+                    if (track_locs[track_num] != 'dummy') {
+                        track = new Audio(track_locs[track_num])
+                        track.volume = volu;
                     }
-                    if (track_num == 2) 
-                    {
-                        track = new Audio('./music/track2.mp3')
-                    }
-                    if (track_num == 3)
-                    {
-                        track = new Audio('./music/track3.mp3')
-                    }
-                    if (track_num == 4)
-                    {
-                        track = new Audio('./music/track4.mp3')
-                    }
-                    if (track_num == 5)
-                    {
-                        track = new Audio('./music/track5.mp3')
-                    }
-                    track.volume = volu;
                 }
 
                 function stop_track() {
