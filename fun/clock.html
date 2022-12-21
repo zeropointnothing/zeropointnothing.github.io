@@ -123,11 +123,24 @@
                     var hours = date.getHours();
                     var minutes = date.getMinutes();
                     var seconds = date.getSeconds();
+                    // Add leading zero's to hours, seconds, and minutes if they are single digit.
+                        hours = hours.toString().padStart(2, "0");
+                        minutes = minutes.toString().padStart(2, "0");
+                        seconds = seconds.toString().padStart(2, "0");
+                    
+                    // Convert time to 12-hour format
+                    var apm = "AM";
+                    if (hours >= 12) {
+                        //prevent hours from being 0
+                        if (hours == 12) {hours +=12;}
+                        hours = hours - 12
+                        apm = "PM"
+                    }    
                     var month = date.getMonth();
                     var day = date.getDate();
                     var year = date.getFullYear();
                     document.title = hours + ":" + minutes + ":" + seconds
-                    date_time.innerHTML = hours + ":" + minutes + ":" + seconds + '<br>' + month + "/" + day + "/" + year;
+                    date_time.innerHTML = hours + ":" + minutes + ":" + seconds + ' ' + apm + '<br>' + month + "/" + day + "/" + year;
                 }
                 
                 setInterval(updateClock, 1000); // update the clock every second
