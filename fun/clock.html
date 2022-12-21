@@ -113,7 +113,8 @@
                         });
                         if (getCookie('_clr') == null)
                         {
-                            console.info()
+                            let element = document.getElementById('date_time');
+                            element.style.color = "#231f1f";
                         } else {
                             color = getCookie('_clr')
                             let element = document.getElementById('date_time');
@@ -122,7 +123,7 @@
                         
                         if (getCookie('_bg') == null)
                         {
-                            console.info()
+                            document.body.style.backgroundImage = "url(https://wallpapercave.com/wp/wp2873520.jpg";
                         } else {
                             bg = getCookie('_bg')
                             bglonk.innerHTML = 'bg link: ' + bg
