@@ -40,8 +40,14 @@
                     padding: 10px;
                     background-color: rgba(236, 253, 252, 0.2);
                 }
+                .lonk {
+                    background-color: black;
+                    padding: 4px;
+                    font-family: font;
+                }
             </style>
-            <p
+            <div id="bglonk" class="lonk" style="color: rgb(96, 96, 96);">no background</div>
+            <p 
                 class="settings">SETTINGS:
                 <br><br>background: 
                 <input 
@@ -58,6 +64,14 @@
                     name="clinp" 
                     onkeyup="updateColor()" 
                     onchange="updateColor()"/>
+                Clock Font:
+                <select name="font_chs">
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Arial">Arial</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="courier new">Courier New</option>
+                    <option value="verdana">Verdana</option>
+                </select>
             </p>
             <div id="date_time">well, this broke :/</div>
 
@@ -91,6 +105,12 @@
                 load()
                 function load()
                     {
+                        var font_chs_element = document.querySelector("select[name='font_chs']");
+                        font_chs_element.addEventListener("change", function() {
+                            font = font_chs_element.value;
+                            document.getElementById("date_time").style.fontFamily = font;
+                            setCookie('_fnt', font, 40)
+                        });
                         if (getCookie('_clr') == null)
                         {
                             console.info()
@@ -99,17 +119,31 @@
                             let element = document.getElementById('date_time');
                             element.style.color = color;
                         }
+                        
                         if (getCookie('_bg') == null)
                         {
                             console.info()
                         } else {
                             bg = getCookie('_bg')
+                            bglonk.innerHTML = 'bg link: ' + bg
                             document.body.style.backgroundImage = "url(" + bg + ")";
                         }
+                        
+                        if (getCookie('_fnt') == null)
+                        {
+                            font = "Times New Roman"
+                            document.getElementById("date_time").style.fontFamily = font
+                        } else {
+                            font = getCookie('_fnt')
+                            document.getElementById("date_time").style.fontFamily = font;
+                            document.querySelector("select[name='font_chs']").value = font;
+                        }
                     }
+
                 function UpdateBg() {
                     var bg = document.getElementsByName("bginp")[0].value;
                     document.body.style.backgroundImage = "url(" + bg + ")";
+                    bglonk.innerHTML = 'bg link: ' + bg
                     setCookie('_bg', bg, 40)
                 }
                 function updateColor() {
@@ -137,6 +171,8 @@
                         apm = "PM"
                     }    
                     var month = date.getMonth();
+                    //js shows months from 0-11. Add one to fix this.
+                    month += 1
                     var day = date.getDate();
                     var year = date.getFullYear();
                     document.title = hours + ":" + minutes + ":" + seconds
