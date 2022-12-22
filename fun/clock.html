@@ -43,6 +43,7 @@
                 .lonk {
                     background-color: black;
                     padding: 4px;
+                    font-size: 20%;
                     font-family: font;
                 }
             </style>
@@ -159,7 +160,6 @@
                     var minutes = date.getMinutes();
                     var seconds = date.getSeconds();
                     // Add leading zero's to hours, seconds, and minutes if they are single digit.
-                        hours = hours.toString().padStart(2, "0");
                         minutes = minutes.toString().padStart(2, "0");
                         seconds = seconds.toString().padStart(2, "0");
                     
@@ -167,8 +167,8 @@
                     var apm = "AM";
                     if (hours >= 12) {
                         //prevent hours from being 0
-                        if (hours == 12) {hours +=12;}
                         hours = hours - 12
+                        if (hours == 0) {hours = 12;}
                         apm = "PM"
                     }    
                     var month = date.getMonth();
