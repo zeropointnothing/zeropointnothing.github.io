@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <head>
+                <!-- Important stuff START -->        
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Zero's Void | Bored Button</title>
+                <!-- Embed code. -->
+                <meta content="Zero's Void | Bored Button" property="og:title" />
+                <meta content="A button to cure bordom." property="og:description" />
+                <meta content="https://zeropointnothing.github.io/fun/chill" property="og:url" />
+                <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
+                <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+                
+                <!--
+                    Link to Webpage's Icon.
+                -->
+                <link id="webicon" rel="icon" href=
+                "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+                type="image/x-icon">
+            
+                <!-- Important stuff END -->
+        </head>
+        <body>
+            <style>
+                  .text {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 350%;
+                }
+                #bottom {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                }
+                .flw {
+                    background-color: grey;
+                    padding: 5px;
+                    padding-right: 2;
+                    border-radius: 10px;
+                    width: fit-content;
+                    cursor: pointer;
+                    font-family:Verdana, Geneva, Tahoma, sans-serif
+                }
+                webbutton {
+                    background-color: grey;
+                    cursor: pointer;
+                    padding: 5px;
+                }
+            </style>
+            <center><h1>Bored?</h1></center>
+            <p1 class="text">
+                Take me to a random
+                <br><center><webbutton onclick="randWeb()">WEBSITE</webbutton></center>
+            </p1>
+            <div id="bottom">
+                Websites all belong to their respective owners.
+                <div onclick="window.open('https://github.com/ZeroPointNothing', '_blank');" class="flw">
+                    [FOLLOW ME]
+                </div>
+            </div>
+            <script>
+                websites = [
+                    //All possible websites.
+                    'https://longdogechallenge.com/',
+                    'http://corndog.io/',
+                    'https://thatsthefinger.com/',
+                    'https://heeeeeeeey.com/',
+                    'http://eelslap.com/',
+                    'https://puginarug.com/',
+                    'http://burymewithmymoney.com/',
+                    'http://www.koalastothemax.com/',
+                    'http://www.rrrgggbbb.com/',
+                    'http://maninthedark.com/',
+                    'http://ninjaflex.com/',
+                    'https://smashthewalls.com/',
+                    'http://ihasabucket.com/',
+                    'http://endless.horse/',
+                    'https://cat-bounce.com/',
+                    'https://pointerpointer.com/',
+                    'https://potatoortomato.com/',
+                    'https://imaninja.com/',
+                    'http://www.ismycomputeron.com/',
+                    'https://chrismckenzie.com/'
+                ]
+                
+                function randWeb() {
+                    arlen = websites.length - 1
+                    num = Math.round(Math.random() * arlen)
+                    url = websites[num]
+                    window.open(url, '_blank');
+                }
+              // Generate a random color
+              function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                  color += letters[Math.floor(Math.random() * 16)];
+                }
+                document.body.style.background = color;
+            }
+            setInterval(getRandomColor, 1500);
+            </script>
+        </body>
+    </html>

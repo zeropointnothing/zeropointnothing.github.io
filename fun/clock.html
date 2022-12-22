@@ -43,7 +43,7 @@
                 .lonk {
                     background-color: black;
                     padding: 4px;
-                    font-size: 20%;
+                    font-size: 80%;
                     font-family: font;
                 }
             </style>
@@ -127,7 +127,7 @@
                             document.body.style.backgroundImage = "url(https://wallpapercave.com/wp/wp2873520.jpg";
                         } else {
                             bg = getCookie('_bg')
-                            bglonk.innerHTML = 'bg link: ' + bg
+                            bglonk.innerHTML = "<a href='" + bg + "'>bg link</a>"
                             document.body.style.backgroundImage = "url(" + bg + ")";
                         }
                         

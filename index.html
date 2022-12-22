@@ -91,6 +91,18 @@
 
         <style>
 
+            navbutton {
+                background-color: black;
+                color: wheat;
+                cursor: pointer;
+                padding: 4px;
+                border-radius: 6px;
+            }
+            navbutton:hover {
+                background-color: rgb(77, 77, 77);
+                transition: 0.2s;
+            }
+
             .card {
                background-color: rgb(46, 41, 73);
                padding: 10px;
@@ -153,10 +165,10 @@
     <body>
         <div class="card">
             <p style="font-family: 'Franklin Gothic Medium'">PAGES:</p>
-            <a href="./aboutme">About Me,</a>
-            <a href="./links">links,</a>
-            <a href="./blog">BLOG,</a>
-            <a href="./fun/">FUN STUFF</a>
+            <navbutton onclick="window.location.href = './aboutme'">About Me</navbutton>
+            <navbutton onclick="window.location.href = './links'">links</navbutton>
+            <navbutton onclick="window.location.href = './blog'">Blog</navbutton>
+            <navbutton onclick="window.location.href = './fun'">FUN STUFF</navbutton>
         </div>
             <!-- Welcome the user -->              
         <h1 align="middle" style="color: rgb(218, 223, 255)">
