@@ -4,8 +4,8 @@
 
             <style>
                 body {
-                background-image: url('https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/bg.png?raw=true');
-                background-repeat: no-repeat;
+                background-color: black;
+                transition: background-color 6s ease;                background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
             }
@@ -182,10 +182,29 @@
 
                 function fix() {
                     document.getElementById('fix-link').style.display = 'none';
+                    stopTrack(track)
                     track_num = 1
                     update_aud()
                     current_track()
                 }
+              // Generate a random color
+              function getRandomColor() {
+                clrs = [
+                    'black',
+                    '#3B3B3B',
+                    '#342730',
+                    '#210D1B',
+                    '#040636',
+                    '#25252F',
+                    '#170505'
+                ]
+                len = clrs.length - 1
+                chs = Math.round(Math.random() * len)
+                color = clrs[chs]
+                console.info(color, len, chs)
+                document.body.style.background = color;
+            }
+            setInterval(getRandomColor, 7000);
 
             </script>
             <p class="buttons">

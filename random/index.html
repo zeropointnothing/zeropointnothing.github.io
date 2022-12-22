@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Important stuff START -->        
+        <title>Zero's Void | Random</title>
+        <!-- Embed code. -->
+        <meta content="Zero's Void | Random" property="og:title" />
+        <meta content="Random Stuff lol." property="og:description" />
+        <meta content="https://zeropointnothing.github.io/random" property="og:url" />
+        <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
+        <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+        
+        <!--
+            Link to Webpage's Icon.
+        -->
+        <link id="webicon" rel="icon" href=
+        "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+        type="image/x-icon">
+    
+        <!-- Important stuff END -->
+    </head>
+    <body>
+        <style>
+            body {
+                background-color: black;
+            }
+        </style>
+        <script>
+            sites = [
+                './amicool.html',
+                './donut.html',
+                './whatdayisit.html',
+                './banan.html'
+            ]
+            load()
+            function load() {
+                len = sites.length -1
+                chs = Math.round(Math.random() * len)
+                url = sites[chs]
+                window.location.href = url;
+            }
+        </script>
+    </body>
+</html>
