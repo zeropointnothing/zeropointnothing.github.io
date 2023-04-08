@@ -56,12 +56,12 @@
     transform: translate(-50%, -50%);
     touch-action: manipulation;
     /* prevents default touch behavior */
-    cursor: url("/assets/pointer.png") 16 16, grab;
+    cursor: url("https://github.com/ZeroPointNothing/zeropointnothing.github.io/raw/main/discord_stuff/assets/pointer.png") 16 16, grab;
 }
 
 
 .frogImg:active {
-    cursor: url("/assets/grab.png") 16 16, grabbing;
+    cursor: url("https://github.com/ZeroPointNothing/zeropointnothing.github.io/raw/main/discord_stuff/assets/grab.png") 16 16, grabbing;
 }
 
 .frogText {
