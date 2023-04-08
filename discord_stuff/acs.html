@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ACKinator Character Setup</title>
+        <!-- Important stuff START -->        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Embed code. -->
+        <meta content="Zero's Void | ACS" property="og:title" />
+        <meta content="shh." property="og:description" />
+        <meta content="https://zeropointnothing.github.io/fun/chill" property="og:url" />
+        <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
+        <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+        
+        <!--
+            Link to Webpage's Icon.
+        -->
+        <link id="webicon" rel="icon" href=
+        "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+        type="image/x-icon">
+    
+        <!-- Important stuff END -->
+    </head>
+    <body>
+        <style>
+            #json-holder {
+                color: rgb(38, 38, 58);
+            }
+            
+            .json-holder-holder {
+                background-color: rgb(97, 97, 98);
+                margin-right: 20%;
+                margin-left: 1%;
+                padding: 0%;
+                border-radius: 10px;
+                
+            }
+        </style>
+
+        <h1>
+            ACKinator Character Set Up
+        </h1>
+        <p1>
+           <i>
+            How to use:
+            1. Enter the name of the character you are creating.
+            2. Press Set Character.
+            3. For each truthy question, press Add Question after entering it in the text box.
+            4. Press Load JSON to view the current JSON.
+            5. Copy everything inside the curly brackets. (Including the brackets)
+           </i> 
+        </p1>
+        <br><br><br>
+
+
+        <input type="text" id="name-input" placeholder="Character Name">
+        <p1 id="name-input-after"> - Current Character: None</p1>
+        <br>
+        <button onclick="addCharacter()" id="add-char">Set Character</button>
+        <br><br>
+
+        <input type="text" id="ques-input" placeholder="Question (must be true)">
+        <br>
+        <button onclick="addQuestionToCharacter()" id="add-attri">Add Question</button>
+        <br><br><br>
+
+        <button onclick="showJSON()" id="save-name">Load JSON</button>
+        <br><br><br><br>
+
+        <div class="json-holder-holder">
+            <p1 id="json-holder"></p1>
+        </div>
+        <script>
+            var questions = []
+            var name_input = document.getElementById("name-input")
+            var ques_input = document.getElementById("ques-input")
+
+            function addQuestionToCharacter() {
+                var character = name_input.value
+                var question = ques_input.value
+
+                questions[0]["questions"][question] = true
+                console.log(questions[0]["questions"])
+             
+                ques_input.value = ""
+            }
+
+            function addCharacter() {
+                console.log(questions)
+
+                var characters = [] 
+                for (const element of questions) {
+                    characters.push(element["name"])
+                }
+
+                if (!characters.includes(name_input.value)) {
+                    console.log(`Added Character: ${name_input.value}`)
+                    questions = [
+                        {
+                            "name": name_input.value,
+                            "questions": {
+
+                            }
+                        }
+                    ]
+                    document.getElementById("name-input-after").innerHTML = ` - Current Character: ${name_input.value}`
+                } else {
+                    console.log(`Character Existed: ${name_input.value}`)
+                }
+                // console.log(questions)
+            }
+            
+            function showJSON() {
+                var jsonString = JSON.stringify(questions, null, 4);
+                var pre = document.createElement("pre");
+                pre.textContent = jsonString;
+                document.getElementById("json-holder").innerHTML = "";
+                document.getElementById("json-holder").appendChild(pre);
+
+                document.getElementById("json-holder").style["padding"] = "0.5%"
+            }
+        </script>
+    </body>
+</html>
