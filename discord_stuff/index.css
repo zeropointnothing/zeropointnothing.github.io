@@ -1,0 +1,108 @@
+#header {
+    background: url("assets/headerbg.png");
+    background-position: center;
+    background-size: 20%;
+
+    border: solid;
+    border-width: 6px;
+
+    border-color: rgb(28, 125, 209);
+    border-right: 1px;
+    border-left: 1px;
+    border-top: 1px;
+
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#title {
+    background-color: rgba(17, 10, 144, 0.317);
+
+    padding: 1%;
+
+    border-radius: 30px;
+
+    color: aliceblue;
+}
+
+#home-button {
+    margin-right: 20px;
+    float: right;
+
+    color: burlywood;
+    background-color: chocolate;
+
+    border-radius: 8px;
+
+    font-size: 120%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#home-button:hover {
+    background-color: rgb(108, 0, 0);
+}
+
+#home-button:active {
+    background-color: rgb(255, 0, 0);
+}
+
+#frogImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.line {
+    width: 30px;
+    height: 3px;
+    margin: 5px;
+    background-color: #333;
+}
+
+.menu-container {
+    position: relative;
+    z-index: 999;
+    width: 60px;
+}
+
+.menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* Set the position of the menu extremely high up to hide it. */
+    transform: translateY(-900%);
+    background-color: #504e61;
+    border: 3px solid #333;
+    padding: 10px;
+}
+
+.menu li {
+    padding: 10px;
+    background-color: #504e61;
+}
+
+.menu li:hover {
+    background-color: #201e2f;
+}
+
+.open .menu {
+    transform: translateY(0);
+}
+
+body {
+    margin: 0;
+
+    background: url("assets/bg.png");
+    background-position: center;
+    background-size: 20%;
+}
