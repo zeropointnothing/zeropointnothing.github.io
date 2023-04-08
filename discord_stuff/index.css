@@ -49,13 +49,19 @@
     background-color: rgb(255, 0, 0);
 }
 
-#frogImg {
+.frogImg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     touch-action: manipulation;
     /* prevents default touch behavior */
+    cursor: url("/assets/pointer.png") 16 16, grab;
+}
+
+
+.frogImg:active {
+    cursor: url("/assets/grab.png") 16 16, grabbing;
 }
 
 .frogText {
