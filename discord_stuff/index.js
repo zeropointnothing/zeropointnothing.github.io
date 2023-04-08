@@ -1,5 +1,6 @@
 // Toggle the hamburger menu so it can be open.
 $(document).ready(function () {
+  $(".frogText").toggleClass("hidden");
   $(".menu-container").find(".hamburger").click(function () {
     $(".menu-container").toggleClass("open");
   });
@@ -10,6 +11,7 @@ var factor = 0.9;
 var interval;
 var lsize = 200
 var ssize = 150
+var squeaks = 0
 
 var frogImg = document.getElementById("frogImg");
 
@@ -23,8 +25,18 @@ function handleStart(event) {
   if (event.type === "mousedown" || event.targetTouches.length == 1) {
     if (ssqueak.paused) {
       ssqueak.play();
+      
+      squeaks += 1
     } else {
       ssqueak.currentTime = 0;
+      squeaks += 1
+    }
+
+    if (squeaks == 10) {
+      $(".frogText").toggleClass("hidden");
+    }
+    if (squeaks > 10) {
+      document.getElementById("frogText").innerHTML = `You've squeaked ${squeaks} times.`
     }
 
     clearInterval(interval);

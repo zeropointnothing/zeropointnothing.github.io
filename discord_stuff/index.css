@@ -54,6 +54,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    touch-action: manipulation;
+    /* prevents default touch behavior */
+}
+
+.frogText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 500%);
+    /* move the text to the center, then move it down */
+
+    font-weight: bold;
+    color: rgba(27, 4, 122, 0.589);
 }
 
 .hamburger {
@@ -97,6 +110,10 @@
 
 .open .menu {
     transform: translateY(0);
+}
+
+.hidden {
+    display: none;
 }
 
 body {
