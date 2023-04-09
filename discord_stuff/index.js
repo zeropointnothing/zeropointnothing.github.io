@@ -15,12 +15,6 @@ var squeaks = 0
 
 var frogImg = document.getElementById("frogImg");
 
-var factor = 0.9;
-var interval;
-var lsize = 200
-var ssize = 150
-
-
 function handleStart(event) {
   if (event.type === "mousedown" || event.targetTouches.length == 1) {
     if (ssqueak.paused) {
