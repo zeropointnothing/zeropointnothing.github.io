@@ -1,0 +1,47 @@
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-y: scroll;
+    min-height: 30vh; /* Add a min-height property */
+  }
+  
+  #date_time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 350%;
+  }
+  
+  .settings {
+    height: 40vh;
+    margin-top: 100vh;
+    padding: 10px;
+    background-color: rgba(236, 253, 252, 0.2);
+
+    /* Apply a scroll bar if the content of the div overflows. */
+    overflow: auto;
+  }
+  
+  .settingsTitle {
+    background-color: rgba(236, 253, 252, 0.268);
+    padding: 3px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+  }
+
+  .link {
+    background-color: black;
+    padding: 4px;
+    font-size: 80%;
+    font-family: font;
+  }
+
+  #github_follow {
+    position: relative;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+  }
+  
