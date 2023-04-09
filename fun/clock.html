@@ -1,186 +1,63 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <!-- Important stuff START -->        
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Zero's Void | Clock</title>
-            <!-- Embed code. -->
-            <meta content="Zero's Void | Clock" property="og:title" />
-            <meta content="isa clock. Tick Tock." property="og:description" />
-            <meta content="https://zeropointnothing.github.io/fun/chill" property="og:url" />
-            <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true" property="og:image" />
-            <meta content="#02143A" data-react-helmet="true" name="theme-color" />
-            
-            <!--
+<html>
+
+<head>
+    <!-- Important stuff START -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero's Void | Clock</title>
+    <!-- Embed code. -->
+    <meta content="Zero's Void | Clock" property="og:title" />
+    <meta content="isa clock. Tick Tock." property="og:description" />
+    <meta content="https://zeropointnothing.github.io/fun/chill" property="og:url" />
+    <meta content="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/frog.gif?raw=true"
+        property="og:image" />
+    <meta content="#02143A" data-react-helmet="true" name="theme-color" />
+
+    <!--
                 Link to Webpage's Icon.
             -->
-            <link id="webicon" rel="icon" href=
-            "https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
-            type="image/x-icon">
-        
-            <!-- Important stuff END -->
-        </head>
-        <body>
-            <style>
-                body {
-                    background-repeat: no-repeat;
-                    background-attachment: fixed;
-                    background-size: cover;
-                }                
+    <link id="webicon" rel="icon"
+        href="https://github.com/ZeroPointNothing/zeropointnothing.github.io/blob/main/img/icon.png?raw=true"
+        type="image/x-icon">
 
-                div#date_time {
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                  font-size: 350%;
-                }
+    <!-- Important stuff END -->
+    <link rel="stylesheet" href="clock.css">
+</head>
 
-                .settings {
-                    padding: 10px;
-                    background-color: rgba(236, 253, 252, 0.2);
-                }
-                .lonk {
-                    background-color: black;
-                    padding: 4px;
-                    font-size: 80%;
-                    font-family: font;
-                }
-            </style>
-            <div id="bglonk" class="lonk" style="color: rgb(96, 96, 96);">no background</div>
-            <p 
-                class="settings">SETTINGS:
-                <br><br>background: 
-                <input 
-                    type="text" 
-                    name="bginp"
-                    placeholder="Enter Background Link" 
-                    onkeyup="UpdateBg()" 
-                    onchange="UpdateBg()"/>
-                <br>    
-                Clock Color:
-                <input 
-                    type="color"
-                    placeholder="colors!"
-                    name="clinp" 
-                    onkeyup="updateColor()" 
-                    onchange="updateColor()"/>
-                Clock Font:
-                <select name="font_chs">
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Arial">Arial</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="courier new">Courier New</option>
-                    <option value="verdana">Verdana</option>
-                </select>
-            </p>
-            <div id="date_time">well, this broke :/</div>
+<body>
+    <div class="settings">
+        <p class="settingsTitle">SETTINGS:</p>
+        <br><br>
+        <label>Background: </label>
+        <input id="bginp" type="text" placeholder="Enter Background Link" onkeyup="UpdateBg()" onchange="UpdateBg()">
+        <br><br>
+        <label>Clock Color:</label>
+        <input type="color" placeholder="colors!" id="clinp" onkeyup="updateColor()" onchange="updateColor()" />
+        <br><br>
+        <label>Clock Font: </label>
+        <select id="font_chs">
+            <option value="times New Roman">Times New Roman</option>
+            <option value="arial">Arial</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="courier new">Courier New</option>
+            <option value="verdana">Verdana</option>
+        </select>
 
-            <script>
-            // Cookies: START //
-            function setCookie(name, value, days) {
-              var expires = "";
-              if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-              }
-              document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-            }
-            // Function to retrieve a Cookie's value. Call with 'getCookie([cookie name])'.
-            function getCookie(name) {
-              var nameEQ = name + "=";
-              var ca = document.cookie.split(';');
-              for(var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-              }
-              return null;
-            }
-            // Cookies: END //
+        <br><br>
+        <label>Show Seconds</label>
+        <input id="hasSeconds" type="checkbox">
+        <br><br>
+        <label>Show Date</label>
+        <input id="hasDate" type="checkbox">
+        <br><br>
+        <label>Show AM/PM</label>
+        <input id="hasAMP" type="checkbox">
 
-                document.body.style.backgroundRepeat = "no-repeat";
-                document.body.style.backgroundSize = "cover";
-                updateClock()
-                load()
-                function load()
-                    {
-                        var font_chs_element = document.querySelector("select[name='font_chs']");
-                        font_chs_element.addEventListener("change", function() {
-                            font = font_chs_element.value;
-                            document.getElementById("date_time").style.fontFamily = font;
-                            setCookie('_fnt', font, 40)
-                        });
-                        if (getCookie('_clr') == null)
-                        {
-                            let element = document.getElementById('date_time');
-                            element.style.color = "#231f1f";
-                        } else {
-                            color = getCookie('_clr')
-                            let element = document.getElementById('date_time');
-                            element.style.color = color;
-                        }
-                        
-                        if (getCookie('_bg') == null)
-                        {
-                            document.body.style.backgroundImage = "url(https://wallpapercave.com/wp/wp2873520.jpg";
-                        } else {
-                            bg = getCookie('_bg')
-                            bglonk.innerHTML = "<a href='" + bg + "'>bg link</a>"
-                            document.body.style.backgroundImage = "url(" + bg + ")";
-                        }
-                        
-                        if (getCookie('_fnt') == null)
-                        {
-                            font = "Times New Roman"
-                            document.getElementById("date_time").style.fontFamily = font
-                        } else {
-                            font = getCookie('_fnt')
-                            document.getElementById("date_time").style.fontFamily = font;
-                            document.querySelector("select[name='font_chs']").value = font;
-                        }
-                    }
+        <!-- <p id="github_follow">Follow Me!</p> -->
+    </div>
+    <div id="date_time">well, this broke :/</div>
 
-                function UpdateBg() {
-                    var bg = document.getElementsByName("bginp")[0].value;
-                    document.body.style.backgroundImage = "url(" + bg + ")";
-                    bglonk.innerHTML = 'bg link: ' + bg
-                    setCookie('_bg', bg, 40)
-                }
-                function updateColor() {
-                    var color = document.getElementsByName("clinp")[0].value;
-                    let element = document.getElementById('date_time');
-                    element.style.color = color;
-                    setCookie('_clr', color, 40)
-                }
-                function updateClock() {
-                    var date = new Date();
-                    var hours = date.getHours();
-                    var minutes = date.getMinutes();
-                    var seconds = date.getSeconds();
-                    // Add leading zero's to hours, seconds, and minutes if they are single digit.
-                        minutes = minutes.toString().padStart(2, "0");
-                        seconds = seconds.toString().padStart(2, "0");
-                    
-                    // Convert time to 12-hour format
-                    var apm = "AM";
-                    if (hours >= 12) {
-                        //prevent hours from being 0
-                        hours = hours - 12
-                        if (hours == 0) {hours = 12;}
-                        apm = "PM"
-                    }    
-                    var month = date.getMonth();
-                    //js shows months from 0-11. Add one to fix this.
-                    month += 1
-                    var day = date.getDate();
-                    var year = date.getFullYear();
-                    document.title = hours + ":" + minutes + ":" + seconds
-                    date_time.innerHTML = hours + ":" + minutes + ":" + seconds + ' ' + apm + '<br>' + month + "/" + day + "/" + year;
-                }
-                
-                setInterval(updateClock, 1000); // update the clock every second
-              </script>
-        </body>
-    </html>
+    <script src="clock.js"></script>
+</body>
+
+</html>
