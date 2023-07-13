@@ -24,7 +24,7 @@ inputElement.addEventListener('keydown', (event) => {
 function login() {
     input = document.getElementById('pssinp')
 
-    if (input.value == password) {
+    if (input.value == _password) {
         cor = document.createElement("p")
         cor.innerHTML = "password accepted. processing request... (this could take awhile)"
         cor.id = "resp"
