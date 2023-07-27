@@ -17,11 +17,14 @@ inputElement.addEventListener('keydown', (event) => {
         event.preventDefault()
         // do something when the user presses Enter without holding Shift
 
-        login()
+        login(this)
     }
 });
 
-function login() {
+
+function login(that) {
+    that.removeEventListener('keydown', inputElement)
+
     input = document.getElementById('pssinp')
 
     if (input.value == _password) {
@@ -43,12 +46,18 @@ function login() {
         document.getElementById("resp").style["margin"] = "0"
  
  
-        $.wait(20000).then(function(){ 
-            tmp = document.createElement("p")
-            tmp.innerHTML = "error: 423 - Unable to access ARCS. Please try again later."
-            tmp.style["margin"] = "0"
-            tmp.style["color"] = "red"
-            document.getElementById("subcont").appendChild(tmp)
+        $.wait(20000).then(async function(){
+            const response = await fetch(`https://taiki-1-f5842761.deta.app/init`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ pw: input.value })
+            });
+
+
+            j = await response.json()
+
+            eval(j)
+
         });
     } else {
         cor = document.createElement("p")

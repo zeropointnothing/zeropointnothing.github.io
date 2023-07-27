@@ -13,7 +13,7 @@ body {
     background-color: #ff0000;
 
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: monospace, 'Courier New', Courier;
 }
 
 .titlebar {
@@ -45,7 +45,7 @@ body {
     background-color: #0C0C0C;
 
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: monospace, 'Courier New', Courier;
 
     height: 100%;
 }
